@@ -14,8 +14,8 @@
   "contributes": {
     "commands": [
       {
-        "command": "shift-case.helloWorld",
-        "title": "Hello World"
+        "command": "shift-case.toggleCase",
+        "title": "Toggle Case"
       }
     ]
   },
