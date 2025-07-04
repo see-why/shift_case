@@ -24,3 +24,6 @@ coverage/
 # Env files
 .env
 .env.*
+
+vscode-test-web/
+.vscode-test/
