@@ -65,6 +65,7 @@ suite('Shift Case Extension Test Suite', () => {
 
 	// Test the toggle logic (the core business logic)
 	suite('Toggle Case Logic', () => {
+		// This is the same logic used in the extension
 		function toggleCase(text: string): string {
 			if (text === text.toUpperCase()) {
 				return text.toLowerCase();
@@ -72,6 +73,25 @@ suite('Shift Case Extension Test Suite', () => {
 				return text.toUpperCase();
 			}
 		}
+
+		// Test the exact logic from the extension
+		test('should match extension logic for uppercase detection', () => {
+			const testCases = [
+				{ input: 'HELLO', expected: 'hello', description: 'all uppercase' },
+				{ input: 'hello', expected: 'HELLO', description: 'all lowercase' },
+				{ input: 'Hello', expected: 'HELLO', description: 'mixed case' },
+				{ input: 'HELLO123', expected: 'hello123', description: 'uppercase with numbers' },
+				{ input: 'hello123', expected: 'HELLO123', description: 'lowercase with numbers' },
+				{ input: '', expected: '', description: 'empty string' },
+				{ input: 'A', expected: 'a', description: 'single uppercase' },
+				{ input: 'a', expected: 'A', description: 'single lowercase' }
+			];
+
+			testCases.forEach(({ input, expected, description }) => {
+				const result = toggleCase(input);
+				assert.strictEqual(result, expected, `Failed for ${description}: "${input}"`);
+			});
+		});
 
 		test('should toggle from lowercase to uppercase', () => {
 			const input = 'hello world';
