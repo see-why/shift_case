@@ -1,9 +1,8 @@
 # Change Log
 
-All notable changes to the "shift-case" extension will be documented in this file.
-
-Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
-
-## [Unreleased]
+## [0.0.1] - 2026-04-06
 
 - Initial release
+- `Toggle Case` command toggles selected text between UPPERCASE and lowercase
+- Keybinding: `Shift+Alt+U`
+- Multi-cursor / multi-selection support
