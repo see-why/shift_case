@@ -5,12 +5,12 @@ import * as vscode from 'vscode';
 // This method is called when your extension is activated
 // Your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
-	const disposable = vscode.commands.registerCommand('shift-case.toggleCase', () => {
+	const disposable = vscode.commands.registerCommand('shift-case.toggleCase', async () => {
 		const editor = vscode.window.activeTextEditor;
 
 		if (editor) {
 			const document = editor.document;
-			editor.edit(editBuilder => {
+			return editor.edit(editBuilder => {
 				for (const selection of editor.selections) {
 					const text = document.getText(selection);
 					if (text.length === 0) { continue; }

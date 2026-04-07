@@ -188,6 +188,8 @@ suite('Shift Case Extension Test Suite', () => {
 		});
 
 		test('should toggle case across multiple selections', async () => {
+			await vscode.extensions.getExtension('see-why.shift-case')?.activate();
+
 			const document = await vscode.workspace.openTextDocument({
 				content: 'hello world\nFOO BAR',
 				language: 'plaintext'
@@ -203,8 +205,7 @@ suite('Shift Case Extension Test Suite', () => {
 			await vscode.commands.executeCommand('shift-case.toggleCase');
 
 			const result = document.getText();
-			assert.ok(result.includes('HELLO'), `Expected "HELLO" in: ${result}`);
-			assert.ok(result.includes('foo'), `Expected "foo" in: ${result}`);
+			assert.strictEqual(result, 'HELLO world\nfoo BAR');
 		});
 	});
 
