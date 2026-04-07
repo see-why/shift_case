@@ -186,6 +186,26 @@ suite('Shift Case Extension Test Suite', () => {
 			assert.ok(typeof myExtension.activate === 'function', 'activate function should exist');
 			assert.ok(typeof myExtension.deactivate === 'function', 'deactivate function should exist');
 		});
+
+		test('should toggle case across multiple selections', async () => {
+			const document = await vscode.workspace.openTextDocument({
+				content: 'hello world\nFOO BAR',
+				language: 'plaintext'
+			});
+			const editor = await vscode.window.showTextDocument(document);
+
+			// Select "hello" on line 1 and "FOO" on line 2
+			editor.selections = [
+				new vscode.Selection(0, 0, 0, 5),  // "hello" → should become "HELLO"
+				new vscode.Selection(1, 0, 1, 3),  // "FOO"   → should become "foo"
+			];
+
+			await vscode.commands.executeCommand('shift-case.toggleCase');
+
+			const result = document.getText();
+			assert.ok(result.includes('HELLO'), `Expected "HELLO" in: ${result}`);
+			assert.ok(result.includes('foo'), `Expected "foo" in: ${result}`);
+		});
 	});
 
 	// Edge cases and error handling

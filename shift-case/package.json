@@ -17,8 +17,7 @@
     "commands": [
       {
         "command": "shift-case.toggleCase",
-        "title": "Toggle Case",
-        "when": "editorHasSelection"
+        "title": "Toggle Case"
       }
     ],
     "keybindings": [
@@ -30,6 +29,12 @@
       }
     ],
     "menus": {
+      "commandPalette": [
+        {
+          "command": "shift-case.toggleCase",
+          "when": "editorHasSelection"
+        }
+      ],
       "editor/context": [
         {
           "command": "shift-case.toggleCase",
