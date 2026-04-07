@@ -1,13 +1,15 @@
 {
   "name": "shift-case",
-  "displayName": "shift_case",
-  "description": "A vs code extension that helps format a selected text from all caps to lower caps and vice versa",
+  "displayName": "Shift Case",
+  "description": "Toggle selected text between UPPERCASE and lowercase with a single keybinding",
   "version": "0.0.1",
+  "publisher": "see-why",
+  "icon": "icon.png",
   "engines": {
     "vscode": "^1.101.0"
   },
   "categories": [
-    "Other"
+    "Formatters"
   ],
   "activationEvents": [],
   "main": "./dist/extension.js",
@@ -17,7 +19,30 @@
         "command": "shift-case.toggleCase",
         "title": "Toggle Case"
       }
-    ]
+    ],
+    "keybindings": [
+      {
+        "command": "shift-case.toggleCase",
+        "key": "shift+alt+u",
+        "mac": "shift+alt+u",
+        "when": "editorHasSelection"
+      }
+    ],
+    "menus": {
+      "commandPalette": [
+        {
+          "command": "shift-case.toggleCase",
+          "when": "editorHasSelection"
+        }
+      ],
+      "editor/context": [
+        {
+          "command": "shift-case.toggleCase",
+          "when": "editorHasSelection",
+          "group": "1_modification"
+        }
+      ]
+    }
   },
   "scripts": {
     "vscode:prepublish": "npm run package",
