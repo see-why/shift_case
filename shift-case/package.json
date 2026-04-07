@@ -4,6 +4,7 @@
   "description": "Toggle selected text between UPPERCASE and lowercase with a single keybinding",
   "version": "0.0.1",
   "publisher": "see-why",
+  "icon": "icon.png",
   "engines": {
     "vscode": "^1.101.0"
   },
